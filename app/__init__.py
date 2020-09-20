@@ -35,6 +35,7 @@ def create_app(config_name):
 
 
 #fixed Exception: No user_loader has been installed for this LoginManager.
-@login_manager.user_loader
-def load_user(user_id):
-    return None
+
+# @login_manager.user_loader
+# def load_user(user_id):
+#     return None
