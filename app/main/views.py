@@ -1,7 +1,7 @@
-from flask import render_template
-from app import app
+from flask import render_template, url_for, redirect
+from . import main
 
-@app.route('/')
+@main.route('/')
 def index():
     '''
     View root page function that returns the index page and its data
@@ -10,7 +10,7 @@ def index():
     return render_template('index.html', title = title)
 
 
-@app.route('/allposts')
+@main.route('/allposts')
 def allposts():
     '''
     View allposts page function that returns the allposts page and its data
@@ -18,7 +18,7 @@ def allposts():
     title = 'All Posts'
     return render_template('pitches/allposts.html', title = title)
 
-@app.route('/pitches')
+@main.route('/pitches')
 def pitches():
     '''
     View pitches page function that returns the pitches page and its data
@@ -26,7 +26,7 @@ def pitches():
     title = 'Pitches'
     return render_template('pitches/pitches.html', title = title)
 
-@app.route('/pickuplines')
+@main.route('/pickuplines')
 def pickuplines():
     '''
     View pickuplines page function that returns the pickuplines page and its data
@@ -34,7 +34,7 @@ def pickuplines():
     title = 'Pick-up Lines'
     return render_template('pitches/pickuplines.html', title = title)
 
-@app.route('/oneliners')
+@main.route('/oneliners')
 def oneliners():
     '''
     View oneliners page function that returns the oneliners page and its data
