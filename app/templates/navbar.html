@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -11,8 +12,12 @@
         <li><a href="/oneliners">One-Liners</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        {% if current_user.is_authenticated %}
+        <li style="color:white;padding:15px;">{{current_user.username}}</li>
+        <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+        {% else %}
+        <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
+        {%endif%}
       </ul>
     </div>
   </nav>
