@@ -9,4 +9,4 @@ app.config.from_object(DevConfig)
 
 bootstrap = Bootstrap(app)
 
-from app import views
+from app import views, error
