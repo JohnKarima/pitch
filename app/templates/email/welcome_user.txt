@@ -1,0 +1,5 @@
+Hello {{user.username}}
+Welcome to Pitch.com!
+We have just seen your sign-up to our site and want to welcome you to the family. Please enjoy the Pitches et al. and feel free to comment, vote and add some of yours as well!
+
+From Admin :)
