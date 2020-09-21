@@ -1,8 +1,8 @@
-from flask import render_template, request, url_for, redirect, abort
-from flask_login import login_required
+from flask import render_template, request, url_for, redirect, abort, flash
+from flask_login import login_required, current_user
 from . import main
-from ..models import User
-from .forms import UpdateProfile
+from ..models import User, Pitch
+from .forms import UpdateProfile, PitchForm
 from .. import db, photos
 
 
@@ -11,8 +11,9 @@ def index():
     '''
     View root page function that returns the index page and its data
     '''
-    title = 'Home: Pitch.com'
-    return render_template('index.html', title = title)
+    pitches= Pitch.get_all_pitches()
+
+    return render_template('index.html', pitches = pitches)
 
 
 @main.route('/allposts')
@@ -87,3 +88,30 @@ def update_pic(uname):
         user.profile_pic_path = path
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
+
+@main.route('/new_post', methods = ['GET','POST'])
+def new_post():
+    form = PitchForm()
+    if form.validate_on_submit():
+        pitch = Pitch( category_id = form.category_id.data, pitch = form.content.data,)
+
+        pitch.save_pitch()
+
+        return redirect(url_for('main.index'))
+
+    return render_template('/new_post.html',pitch_form = form)
+
+
+
+
+    # post = Pitch(category_id = form.category_id.data, pitch = form.content.data)
+    # new_pitch = Pitch(pitch = pitch, category_id = category_id)
+    # db.session.add(post)
+    # db.session.commit()
+    # flash('Your post has been created!')
+    # # return redirect(url_for('main.index'))
+    
+    
+    # title = 'Add new post'
+    # return render_template("new_post.html", form = form)
+    

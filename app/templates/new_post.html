@@ -1,0 +1,44 @@
+{% extends 'base.html'%}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+<div class="container">
+<form method="POST" action="">
+    <div class="form-group">
+      <label for="category">Category select</label>
+      <select class="form-control" id="category">
+        <option>Pitches</option>
+        <option>Pickup Lines</option>
+        <option>One-Liners</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="pitch">Post textarea</label>
+      <textarea class="form-control" id="post" rows="3"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col text-center mt-4">
+                <a href="{{url_for('main.allposts')}}">
+                        <button type="button" class="btn btn-primary btn-sm" style="margin-bottom:10px;">
+                                <span class="glyphicon glyphicon-chevron-left" ></span> Back
+                        </button>
+                </a>
+
+        </div>
+    </div>
+   
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            {{wtf.quick_form(pitch_form)}}
+        </div>
+    </div>
+    
+</div>
+
+{% endblock%}
