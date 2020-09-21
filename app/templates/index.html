@@ -1,9 +1,17 @@
 {% extends 'base.html'%}
 {% block content %}
+<style>
+    h1 {color:#1a1a61; font-size: 380% ;text-decoration:underline ; font-weight: bold;}
+    h2 {color:#1a1a61; font-size: 330%;}
+    p {color:#0d1321; font-size: 200%; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif}
+    .panel {background-color: #88B7B5; }
+    .subtext {font-size: 130%; font-weight: bold;}
+  </style>
+
 
 <div class="container text-center">
 <h1>Welcome to Pitch.com!</h1>
-<h2>Here are all our posts! Can you spot yours?</h2>
+<h2>Here are all our posts! Can you spot yours?</h2><br>
 <a href="{{url_for('main.new_post')}}"><br></a>
 
 </div>
@@ -12,13 +20,13 @@
 {% for pitch in pitches[::-1]%}
 
         <div class="container">
-        <div class="panel bg-light text-center style="style="box-shadow: 5px 5px 5px 5px #f2f2f2; padding:10px;">
-            <p>{{pitch.pitch}}</p>
+        <div class="panel bg-light text-center style="style="box-shadow: 5px 5px 5px 5px #ceedec; padding:10px;">
+            <p>"{{pitch.pitch}}"</p>
             <!-- <p>{{pitch.category_name}}</p> -->
-            <p> Posted on:{{pitch.date}}</p>
-            <!-- {{pitch.category_id}}
-            <a class= "btn btn-success btn-sm">Upvote <span>{{pitch.upvote}}</span></a>
-          <a class= "btn btn-info btn-sm">Downvote <span>{{pitch.downvote}}</span></a>&nbsp;&nbsp;| -->
+            <p class="subtext"> Posted: {{pitch.date.strftime("%c")}}</p>
+            {{pitch.category_id}}
+            <a class= "btn btn-success btn-sm" style="background-color: #7F7EFF;">Upvote </a>
+          <a class= "btn btn-info btn-sm" style="background-color: #CC8B8C;">Downvote </a>
         </div>
     </div>
 
