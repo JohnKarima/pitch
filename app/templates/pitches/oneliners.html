@@ -1,5 +1,4 @@
 {% extends 'base.html'%}
-
 {% block content %}
 
 <style>
@@ -8,22 +7,17 @@
     p {color:#0d1321; font-size: 200%; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif}
     .panel {background-color: #88B7B5; }
     .subtext {font-size: 130%; font-weight: bold;}
-
-  </style>
+</style>
 
 <div class="container text-center">
     <h1>One-Liners</h1>
-    <h2><em>Drops mic...</em></h2>
-    <a href="{{url_for('main.new_post')}}"><br></a><br>
-    
-    </div>
-
+    <h2><em>Drops mic...</em></h2><br><br>
+</div>
 
 {% for pitch in pitches[::-1]%}
 <div class="container">
         <div class="panel bg-light text-center style="style="box-shadow: 5px 5px 5px 5px #ceedec; padding:10px;">
             <p>"{{pitch.pitch}}"</p>
-            <!-- <p>{{pitch.category_name}}</p> -->
             <p class="subtext"> Posted: {{pitch.date.strftime("%c")}}</p>
             {{pitch.category_id}}
             <a class= "btn btn-success btn-sm" style="background-color: #7F7EFF;">Upvote </a>

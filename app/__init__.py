@@ -14,13 +14,11 @@ login_manager.login_view = 'auth.login'
 photos = UploadSet('photos',IMAGES)
 mail = Mail()
 
-
 def create_app(config_name):
     app = Flask(__name__)
 
     app.config.from_object(config_options[config_name])
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
 
     bootstrap.init_app(app)
     db.init_app(app)
@@ -28,7 +26,6 @@ def create_app(config_name):
     configure_uploads(app,photos)
     mail.init_app(app)
     
-
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
 
@@ -36,11 +33,3 @@ def create_app(config_name):
     app.register_blueprint(auth_blueprint, url_prefix = '/authenticate')
 
     return app
-
-
-
-#fixed Exception: No user_loader has been installed for this LoginManager.
-
-# @login_manager.user_loader
-# def load_user(user_id):
-#     return None

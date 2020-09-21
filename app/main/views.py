@@ -93,6 +93,3 @@ def new_post():
         pitch.save_pitch()
         return redirect(url_for('main.index'))
     return render_template('/new_post.html',pitch_form = form, title = title)
-
-
-

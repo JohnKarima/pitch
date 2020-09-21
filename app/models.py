@@ -19,7 +19,6 @@ class User(UserMixin, db.Model):
     pass_secure = db.Column(db.String(255))
     pitch = db.relationship('Pitch',backref = 'user',lazy = "dynamic")
 
-
     @property
     def password(self):
         raise AttributeError('You cannot read the password attribute')
@@ -44,7 +43,6 @@ class Role(db.Model):
     def __repr__(self):
         return f'User {self.name}'
 
-
 class Pitch(db.Model):
     '''
     Pitch class that define Pitch Objects
@@ -54,7 +52,6 @@ class Pitch(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     pitch = db.Column(db.Text)
     category_id = db.Column(db.Integer)
-    # category_name = db.Column(db.text)
     upvote = db.Column(db.Integer)
     downvote = db.Column(db.Integer)
     date = db.Column(db.DateTime,default=datetime.utcnow)
@@ -99,57 +96,11 @@ class Comment(db.Model):
         db.session.add(self)
         db.session.commit()
         
-
     @classmethod
     def get_comments(cls,id):
         comments = Comment.query.filter_by(pitch_id=id).all()
         return comments
 
-
     @classmethod
     def clear_(cls):
         Comment.all_comments.clear()
-
-
-
-
-
-# class PitchCategory(db.Model):
-#     __tablename__ ='pitch_categories'
-#     id = db.Column(db.Integer, primary_key=True)
-#     category_name = db.Column(db.String(255))
-#     category_description = db.Column(db.String(255))
-
-#     @classmethod
-#     def get_categories(cls):
-#         '''
-#         This function fetches all the categories from the database
-#         '''
-#         categories = PitchCategory.query.all()
-#         return categories
-
-
-
-
-        
-
-# class Comment(db.Model):
-    
-#     __tablename__ = 'comments'
-
-#     id = db.Column(db.Integer,primary_key = True)
-#     comment_id = db.Column(db.Integer)
-#     comment_post = db.Column(db.String)
-#     posted = db.Column(db.DateTime,default=datetime.utcnow)
-#     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
-
-#     def save_comment(self):
-#         db.session.add(self)
-#         db.session.commit()
-
-#     @classmethod
-#     def get_comments(cls,id):
-#         comments = Comment.query.filter_by(comment_id=id).all()
-#         return comments
-
-
