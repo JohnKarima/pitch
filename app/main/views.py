@@ -5,16 +5,14 @@ from ..models import User, Pitch
 from .forms import UpdateProfile, PitchForm
 from .. import db, photos
 
-
 @main.route('/')
 def index():
     '''
     View root page function that returns the index page and its data
     '''
     pitches= Pitch.get_all_pitches()
-
-    return render_template('index.html', pitches = pitches)
-
+    title = 'Home'
+    return render_template('index.html', pitches = pitches, title = title)
 
 @main.route('/allposts')
 def allposts():
@@ -48,40 +46,32 @@ def oneliners():
     View oneliners page function that returns the oneliners page and its data
     '''
     pitches= Pitch.get_pitches_by_category(3)
-    
-
     title = 'One-Liners'
     return render_template('pitches/oneliners.html', title = title, pitches = pitches)
 
 @main.route('/user/<uname>')
 def profile(uname):
     user = User.query.filter_by(username = uname).first()
-
+    title = 'Profile'
     if user is None:
         abort(404)
-
-    return render_template("profile/profile.html", user = user)
-
+    return render_template("profile/profile.html", user = user, title = title)
 
 @main.route('/user/<uname>/update',methods = ['GET','POST'])
 @login_required
 def update_profile(uname):
     user = User.query.filter_by(username = uname).first()
+    title = 'Update'
     if user is None:
         abort(404)
-
     form = UpdateProfile()
 
     if form.validate_on_submit():
         user.bio = form.bio.data
-
         db.session.add(user)
         db.session.commit()
-
         return redirect(url_for('.profile',uname=user.username))
-
-    return render_template('profile/update.html',form =form)
-
+    return render_template('profile/update.html',form =form, title = title)
 
 @main.route('/user/<uname>/update/pic',methods= ['POST'])
 @login_required
@@ -97,14 +87,12 @@ def update_pic(uname):
 @main.route('/new_post', methods = ['GET','POST'])
 def new_post():
     form = PitchForm()
+    title = 'New Post'
     if form.validate_on_submit():
         pitch = Pitch( category_id = form.category_id.data, pitch = form.content.data,)
-
         pitch.save_pitch()
-
         return redirect(url_for('main.index'))
-
-    return render_template('/new_post.html',pitch_form = form)
+    return render_template('/new_post.html',pitch_form = form, title = title)
 
 
 

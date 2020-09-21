@@ -4,7 +4,6 @@ from wtforms.validators import Required, Email, EqualTo
 from ..models import User
 from wtforms import ValidationError
 
-
 class RegistrationForm(FlaskForm):
     email = StringField('Your Email Address',validators=[Required(),Email()])
     username = StringField('Enter your username',validators = [Required()])
@@ -26,6 +25,3 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password',validators =[Required()])
     remember = BooleanField('Remember me')
     submit = SubmitField('Sign In')
-
-
-

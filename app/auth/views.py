@@ -6,7 +6,6 @@ from .. import db
 from ..models import User
 from ..email import mail_message
 
-
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     login_form = LoginForm()
@@ -19,7 +18,6 @@ def login():
 
     title = "pitch login"
     return render_template('auth/login.html', login_form = login_form, title = title)
-
 
 @auth.route('/register',methods = ["GET","POST"])
 def register():
