@@ -108,15 +108,3 @@ def new_post():
 
 
 
-
-    # post = Pitch(category_id = form.category_id.data, pitch = form.content.data)
-    # new_pitch = Pitch(pitch = pitch, category_id = category_id)
-    # db.session.add(post)
-    # db.session.commit()
-    # flash('Your post has been created!')
-    # # return redirect(url_for('main.index'))
-    
-    
-    # title = 'Add new post'
-    # return render_template("new_post.html", form = form)
-    

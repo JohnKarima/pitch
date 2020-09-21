@@ -11,8 +11,8 @@
 <div class="container">
 <div class="row"></div>
 
-<div class="col-lg-2 text-center">
-    <h1 class="text-center"> {{user.username|capitalize}} </h1>
+<div class="col-lg-2">
+    <h1 class="text-center"> {{user.username|capitalize}}</h1>
 
 
     {% if user.bio %}
@@ -43,15 +43,15 @@
   </div>
   <div>
     {% if user == current_user %}
-    <a href="{{url_for('main.update_profile',uname=user.username)}}"><h2 class="text-center">Edit profile</h2>
+    <a href="{{url_for('main.update_profile',uname=user.username)}}"><h2 class="text-center"><u>Edit profile</u></h2>
     </a>
 {% endif %}
+
   </div>
 
-  <h2 class="text-center">or</h2>
-
+<br>
 <a href="{{url_for('main.new_post')}}">
-    <h2 class="text-center">Create new post</h2>
+    <h2 class="text-center"><u>Create post</u></h2>
 </a>
 
 </div>
