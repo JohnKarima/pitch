@@ -1,26 +1,31 @@
 {% extends 'base.html'%}
-
 {% block content %}
 
-<h1>this is the voice of the index.html!!!</h1>
+<div class="container text-center">
+<h1>Welcome to Pitch.com!</h1>
+<h2>Here are all our posts! Can you spot yours?</h2>
 <a href="{{url_for('main.new_post')}}"><br></a>
 
-<p>{{pitches}}</p>
-
-<!-- {% if pitches.pitch %}
-<p> {{pitches.pitch}}</p>
-{%else%}
-<p> {{pitches.pitch| capitalize}} has no bio </p>
-{% endif %}-->
+</div>
 
 
-{% for pitch in pitches: %}
+{% for pitch in pitches[::-1]%}
+
+        <div class="container">
         <div class="panel bg-light text-center style="style="box-shadow: 5px 5px 5px 5px #f2f2f2; padding:10px;">
             <p>{{pitch.pitch}}</p>
             <!-- <p>{{pitch.category_name}}</p> -->
             <p> Posted on:{{pitch.date}}</p>
+            <!-- {{pitch.category_id}}
+            <a class= "btn btn-success btn-sm">Upvote <span>{{pitch.upvote}}</span></a>
+          <a class= "btn btn-info btn-sm">Downvote <span>{{pitch.downvote}}</span></a>&nbsp;&nbsp;| -->
         </div>
+    </div>
+
+        
   {% endfor %} 
+
+  
 
 
 {% endblock%}

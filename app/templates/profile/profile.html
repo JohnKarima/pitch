@@ -1,22 +1,29 @@
 {% extends 'base.html'%}
 
+{% block styles%}
+
+ {{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/profile.css')}}">
+
+{% endblock %}
+
 {% block content %}
 <div class="container">
-<div class="row">
-<!-- displaying  Username-->
-  <div class="col-md-4">
-    <h3> {{user.username| capitalize}} </h3>
+<div class="row"></div>
 
-    <!--Displaying user bio-->
+<div class="col-lg-2 text-center">
+    <h1 class="text-center"> {{user.username|capitalize}} </h1>
+
+
     {% if user.bio %}
-      <p> {{user.bio}}</p>
+      <h2 class="text-center"><em>"{{user.bio}}"</em></h2>
     {%else%}
-      <p> {{user.username| capitalize}} has no bio </p>
+      <p> {{user.username|capitalize}} has no bio </p>
     {% endif %}
   </div>
 
-  <!--Display profile photo-->
-  <div class="col-md-4">
+
+  <div class="col-lg-8">
     {% if user.profile_pic_path %}
 
     <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="img-thumbnail">
@@ -29,17 +36,27 @@
         {% if user == current_user %}
     <form  action="{{url_for('main.update_pic',uname=user.username)}}" method="post" enctype = "multipart/form-data">
 
-      <input type="file"  name="photo" class="form-control" required>
-      <input type="submit">
+      <input type="file"  name="photo" class="form-control text-center" required>
+      <input type="submit"><br><br>
     </form>
       {% endif %}
   </div>
-  
   <div>
     {% if user == current_user %}
-    <a href="{{url_for('main.update_profile',uname=user.username)}}">Edit profile</a>
+    <a href="{{url_for('main.update_profile',uname=user.username)}}"><h2 class="text-center">Edit profile</h2>
+    </a>
 {% endif %}
-  </div><br><br>
+  </div>
+
+  <h2 class="text-center">or</h2>
+
+<a href="{{url_for('main.new_post')}}">
+    <h2 class="text-center">Create new post</h2>
+</a>
+
 </div>
 </div>
+
+
+
 {% endblock %}

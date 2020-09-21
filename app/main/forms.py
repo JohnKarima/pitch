@@ -7,10 +7,10 @@ class CommentForm(FlaskForm):
     submit = SubmitField('Submit')
 
 class UpdateProfile(FlaskForm):
-    bio = TextAreaField('Tell us about you.',validators = [Required()])
+    bio = TextAreaField('Don\'t be shy... Tell us about yourself!',validators = [Required()])
     submit = SubmitField('Submit')
 
 class PitchForm(FlaskForm):
-    category_id = SelectField('Which category best suits your post?', choices=[('1', 'Pitches'), ('2', 'Pickup Lines'), ('3', 'One-Liners')])
+    category_id = SelectField('Which category best suits your new post?', choices=[('1', 'Pitches'), ('2', 'Pickup Lines'), ('3', 'One-Liners')])
     content = TextAreaField('Create a post', validators=[Required()])
     submit = SubmitField('Submit') 

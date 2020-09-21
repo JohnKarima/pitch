@@ -2,18 +2,23 @@
 
 {% block content %}
 
-<h1>this is the voice of the pitches.html!!!</h1>
-<a href="{{url_for('main.new_post')}}"><br>For new post creation take note</a>
+<div class="container text-center">
+    <h1>Pitches</h1>
+    <h2><em>For those trying to put a ding in the universe...in 140 characters or less.</em></h2>
+    <a href="{{url_for('main.new_post')}}"><br></a>
+    
+    </div>
 
 
 
-
-{% for pitch in pitches: %}
+{% for pitch in pitches[::-1]%}
+<div class="container">
         <div class="panel bg-light text-center style="style="box-shadow: 5px 5px 5px 5px #f2f2f2; padding:10px;">
             <p>{{pitch.pitch}}</p>
             <!-- <p>{{pitch.category_name}}</p> -->
             <p> Posted on:{{pitch.date}}</p>
         </div>
+    </div>
   {% endfor %} 
 
 

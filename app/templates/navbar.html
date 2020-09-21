@@ -1,19 +1,19 @@
-
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse" style="background:#0d1321" >
     <div class="container-fluid">
       <div class="navbar-header">
         <a class="navbar-brand" href="/">Pitch.com</a>
       </div>
       <ul class="nav navbar-nav">
         <li><a href="/">Home</a></li>
-        <li><a href="/allposts">All Posts</a></li>
+        <!-- <li><a href="/allposts">All Posts</a></li> -->
         <li><a href="/pitches">Pitches</a></li>
-        <li><a href="/pickuplines">Pickup Lines</a></li>
+        <li><a href="/pickuplines">Pick-up Lines</a></li>
         <li><a href="/oneliners">One-Liners</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         {% if current_user.is_authenticated %}
         <li><a href="{{url_for('main.profile',uname=current_user.username)}}">Profile</a></li>
+        <li><a href="{{url_for('main.new_post')}}">New Post</a></li>
         <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
         {% else %}
         <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
@@ -21,3 +21,4 @@
       </ul>
     </div>
   </nav>
+
