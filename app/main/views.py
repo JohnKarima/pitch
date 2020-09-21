@@ -29,24 +29,29 @@ def pitches():
     '''
     View pitches page function that returns the pitches page and its data
     '''
+    pitches= Pitch.get_pitches_by_category(1)
     title = 'Pitches'
-    return render_template('pitches/pitches.html', title = title)
+    return render_template('pitches/pitches.html', title = title, pitches = pitches)
 
 @main.route('/pickuplines')
 def pickuplines():
     '''
     View pickuplines page function that returns the pickuplines page and its data
     '''
+    pitches= Pitch.get_pitches_by_category(2)
     title = 'Pick-up Lines'
-    return render_template('pitches/pickuplines.html', title = title)
+    return render_template('pitches/pickuplines.html', title = title, pitches = pitches)
 
 @main.route('/oneliners')
 def oneliners():
     '''
     View oneliners page function that returns the oneliners page and its data
     '''
+    pitches= Pitch.get_pitches_by_category(3)
+    
+
     title = 'One-Liners'
-    return render_template('pitches/oneliners.html', title = title)
+    return render_template('pitches/oneliners.html', title = title, pitches = pitches)
 
 @main.route('/user/<uname>')
 def profile(uname):

@@ -43,9 +43,6 @@ class Role(db.Model):
         return f'User {self.name}'
 
 
-
-
-
 class Pitch(db.Model):
     '''
     Pitch class that define Pitch Objects
@@ -55,6 +52,7 @@ class Pitch(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     pitch = db.Column(db.Text)
     category_id = db.Column(db.Integer)
+    # category_name = db.Column(db.text)
     date = db.Column(db.DateTime,default=datetime.utcnow)
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
     # comments = db.relationship('Comment',backref = 'user',lazy = "dynamic")
