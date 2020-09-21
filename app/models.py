@@ -61,21 +61,14 @@ class Pitch(db.Model):
     def save_pitch(self):
         db.session.add(self)
         db.session.commit()
+    
+    @classmethod
+    def get_all_pitches(cls):
+        return Pitch.query.all()
 
     @classmethod
     def get_pitches_by_category(cls,category_id):
         return Pitch.query.filter_by(category_id= category_id)
-
-    def get_pitches(id):
-        pitches = Pitch.query.filter_by(category_id=id).all()
-        return pitches
-
-    @classmethod
-    def get_all_pitches(cls):
-        '''
-        Function that queries the database and returns all the pitches
-        '''
-        return Pitch.query.all()
 
 
 class Comment(db.Model):

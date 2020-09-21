@@ -10,7 +10,7 @@ def index():
     '''
     View root page function that returns the index page and its data
     '''
-    pitches= Pitch.get_all_pitches()
+    pitches = Pitch.get_all_pitches()
     title = 'Home'
     return render_template('index.html', pitches = pitches, title = title)
 
