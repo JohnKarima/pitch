@@ -5,7 +5,7 @@ Pitch
 - An application where users submit their one-minute pitches, pick-up lines and one-liners and other users vote on them and leave comments to give their feedback on them. The pitches are organized by category and the new posts should be displayed first.
 
 # Link to Live Project
-- TBD
+- https://pitch343.herokuapp.com
 
 # Author 
 - [John Karima](https://github.com/JohnKarima)
